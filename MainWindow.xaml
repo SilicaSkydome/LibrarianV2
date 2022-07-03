@@ -1,0 +1,81 @@
+﻿<Window x:Name="mainWindow" x:Class="Librarian.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Librarian"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280" WindowStyle="None" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <!-- Close/Minimize -->
+        <Style x:Key="WindowButton" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="OverridesDefaultStyle" Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Cursor" Value="Hand" />
+            </Style.Setters>
+        </Style>
+        <!-- Menu -->
+        <Style x:Key="MenuButton" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="OverridesDefaultStyle" Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="ItemsControl.Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="img/Regular.png"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Cursor" Value="Hand" />
+            </Style.Setters>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="ItemsControl.Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="img/Hover.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="ItemsControl.Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="img/Pressed.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="App" Height="720" Margin="0,0,-8,-8" Background="White" OpacityMask="White" Width="1270" MinWidth="1270" MaxWidth="1270" MinHeight="720" MaxHeight="720" Loaded="onLoad">
+        <Image x:Name="Header" HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Width="1280" Source="img/Header.png" Margin="-9,-4,-1,0" MouseLeftButtonDown="MoveWindow" />
+        <Image x:Name="Logo" HorizontalAlignment="Left" Height="195" Margin="10,25,0,0" VerticalAlignment="Top" Width="195" Source="img/Logo.png" Cursor="Hand" />
+        <Label Content="Librarian" HorizontalAlignment="Left" Margin="576,25,0,0" VerticalAlignment="Top" Height="77" Width="364" FontFamily="Copperplate Gothic Bold" Background="#00000000" Foreground="White" FontSize="64" />
+        <!-- Menu -->
+        <Button x:Name="Profile" Content="Profile" HorizontalAlignment="Left" Margin="406,135,0,0" VerticalAlignment="Top" Width="200" Height="40" BorderThickness="0" Foreground="White" FontFamily="Copperplate Gothic Bold" FontSize="14" Style="{StaticResource MenuButton}" Click="Profile_Click" />
+        <Button x:Name="Catalog" Content="Catalog" HorizontalAlignment="Left" Margin="570,135,0,0" VerticalAlignment="Top" Width="200" Height="40" BorderThickness="0" Foreground="White" FontFamily="Copperplate Gothic Bold" FontSize="14" Style="{StaticResource MenuButton}" Click="Catalog_Click" />
+        <Button x:Name="Place_order" Content="Place order" HorizontalAlignment="Left" Margin="735,135,0,0" VerticalAlignment="Top" Width="200" Height="40" BorderThickness="0" Foreground="White" FontFamily="Copperplate Gothic Bold" FontSize="14" Style="{StaticResource MenuButton}" Click="Place_order_Click" />
+        <Button x:Name="Make_request" Content="Make request" HorizontalAlignment="Left" Margin="898,135,0,0" VerticalAlignment="Top" Width="200" Height="40" BorderThickness="0" Foreground="White" FontFamily="Copperplate Gothic Bold" FontSize="14" Style="{StaticResource MenuButton}" Click="Make_request_Click" />
+        <!-- Frame Buttons -->
+        <Button x:Name="Close" Content="X" HorizontalAlignment="Left" Margin="1232,0,0,0" VerticalAlignment="Top" Width="32" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="32" Click="CloseWindow" FontWeight="Bold" Height="44" Style="{StaticResource WindowButton}" />
+        <Button x:Name="Minimize" Content="" HorizontalAlignment="Left" Margin="1194,31,0,0" VerticalAlignment="Top" Width="32" Click="MinimizeWindow" Background="White" BorderBrush="White" Height="6" Style="{StaticResource WindowButton}" />
+        <Border x:Name="Forms" BorderBrush="#FFE03A3A" BorderThickness="1" HorizontalAlignment="Left" Height="500" Margin="220,210,0,0" VerticalAlignment="Top" Width="1042"/>
+    </Grid>
+</Window>
